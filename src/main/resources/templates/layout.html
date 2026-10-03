@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Shared header and menu -->
+<header th:fragment="header">
+    <h1>Employee Management</h1>
+    <nav>
+        <a th:href="@{/employees/new}">Add Employee</a> |
+        <a th:href="@{/employees}">Employee Listing</a>
+    </nav>
+    <hr />
+</header>
+
+</body>
+</html>

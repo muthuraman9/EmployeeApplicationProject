@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>View Employee</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+<div th:replace="~{layout :: header}"></div>
+
+<h2>Employee Details</h2>
+
+<table class="view-table">
+    <tr><th>ID</th>          <td th:text="${employee.id}">1</td></tr>
+    <tr><th>First Name</th>  <td th:text="${employee.firstName}">John</td></tr>
+    <tr><th>Last Name</th>   <td th:text="${employee.lastName}">Doe</td></tr>
+    <tr><th>Date of Birth</th> <td th:text="${employee.dateOfBirth}">1990-01-01</td></tr>
+    <tr><th>Department</th>  <td th:text="${employee.department}">IT</td></tr>
+    <tr><th>Salary</th>      <td th:text="${employee.salary}">50000</td></tr>
+    <tr>
+        <th>Manager</th>
+        <td th:text="${employee.manager != null 
+                       ? employee.manager.firstName + ' ' + employee.manager.lastName 
+                       : '—'}">Manager</td>
+    </tr>
+</table>
+
+<p>
+    <a th:href="@{/employees/{id}/edit(id=${employee.id})}">Edit</a> |
+    <a th:href="@{/employees}">Back to Listing</a>
+</p>
+
+</body>
+</html>
