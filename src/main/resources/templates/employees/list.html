@@ -13,7 +13,7 @@
 
 
 <p th:if="${#lists.isEmpty(employees)}" class="empty-message">
-    No employees yet. <a th:href="@{/employees/new}">Add one</a>.
+    No employees yet.
 </p>
 
 <table th:unless="${#lists.isEmpty(employees)}" class="employee-table">
