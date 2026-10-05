@@ -71,10 +71,10 @@ public class EmployeeController {
                                BindingResult result,
                                Model model) {
 
-        // If validation failed, re-render the form with error messages.
+        
         if (result.hasErrors()) {
             model.addAttribute("departments", Department.values());
-            // Exclude self when editing
+            
             Integer idToExclude = employee.getId() != null ? employee.getId() : null;
             model.addAttribute("managers", employeeService.getPossibleManagers(idToExclude));
             model.addAttribute("pageTitle",
