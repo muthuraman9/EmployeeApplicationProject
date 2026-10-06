@@ -26,6 +26,7 @@
         <th>Department</th>
         <th>Salary</th>
         <th>Manager</th>
+        <th>Photo</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -40,6 +41,13 @@
         <td th:text="${emp.manager != null 
                        ? emp.manager.firstName + ' ' + emp.manager.lastName 
                        : '—'}">Manager Name</td>
+        <td>
+		    <img th:if="${emp.photoPath != null}"
+		         th:src="@{'/uploads/' + ${emp.photoPath}}"
+		         alt="Photo" style="max-width: 40px; height: auto;" />
+		    <span th:if="${emp.photoPath == null}">—</span>
+		</td>               
+                       
         <td>
             <a th:href="@{/employees/{id}(id=${emp.id})}">View</a> |
             <a th:href="@{/employees/{id}/edit(id=${emp.id})}">Edit</a>

@@ -42,6 +42,7 @@ public class Employee {
     @Past
     @Column(nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Adult(message="age should be greater than 18")
     private LocalDate dateOfBirth;
 
     @NotNull(message = "Department is required")
@@ -57,10 +58,26 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "manager_id")
     private Employee manager;
+    
+    
+    @Column
+    private String photoPath;
+    
+    
+    
+    
+    
+   
 
     // ──────────── Getters and Setters ────────────
 
-    public Integer getId() { return id; }
+    public String getPhotoPath() {
+		return photoPath;
+	}
+	public void setPhotoPath(String photoPath) {
+		this.photoPath = photoPath;
+	}
+	public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
     public String getFirstName() { return firstName; }

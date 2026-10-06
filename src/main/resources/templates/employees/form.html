@@ -16,7 +16,11 @@
     th:field="*{firstName}" then binds each input to employee.firstName.
     th:action chooses POST URL based on whether it's an edit or a new employee.
 -->
-<form th:action="@{/employees}" th:object="${employee}" method="post">
+<form th:action="@{/employees}"
+      th:object="${employee}"
+      method="post"
+      enctype="multipart/form-data">
+	
 
     <!-- Hidden ID — empty for new, populated for edit -->
     <input type="hidden" th:field="*{id}" />
@@ -72,6 +76,18 @@
             </option>
         </select>
     </div>
+    
+    <div class="form-row">
+		    <label>Photo</label>
+		    <input type="file" name="photoFile" accept="image/*" />
+		
+		    <!-- Show existing photo if editing -->
+		    <div th:if="${employee.photoPath != null}" style="margin-top: 8px;">
+		        <img th:src="@{'/uploads/' + ${#strings.replace(employee.photoPath, 'uploads/', '')}}"
+		             alt="Current photo"
+		             style="max-width: 120px; border: 1px solid #ccc;" />
+		    </div>
+	</div>
 
     <div class="form-actions">
         <button type="submit">Save</button>
